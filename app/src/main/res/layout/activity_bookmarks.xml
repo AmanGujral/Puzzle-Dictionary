@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookmarksActivity"
+    android:fitsSystemWindows="true"
+    android:background="@color/lightBlue"
+    android:id="@+id/constraintLayout3">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bookmarkTabAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bookmarkTabToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Bookmarks"
+            app:titleTextColor="@color/white"
+            android:theme="@style/ToolBarTheme.ToolBarStyle"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookmarksRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/dictionary_item_container"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
+        android:layout_marginTop="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/noBookmarksTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No Bookmarks Found!"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

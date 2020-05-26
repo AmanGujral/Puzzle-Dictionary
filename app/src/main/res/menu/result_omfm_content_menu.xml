@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/resultOmfmPlusBtn"
+        android:icon="@drawable/pink_plus"
+        android:title=""/>
+
+    <item
+        android:id="@+id/resultOmfmFlashcardBtn"
+        android:icon="@drawable/flash_cards"
+        android:title="Flash Cards"/>
+
+    <item
+        android:id="@+id/resultOmfmExploreBtn"
+        android:icon="@drawable/explore"
+        android:title="Explore"/>
+
+    <item
+        android:id="@+id/resultOmfmHomeBtn"
+        android:icon="@drawable/white_home"
+        android:title="Home"/>
+
+</menu>

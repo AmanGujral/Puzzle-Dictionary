@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuickTestActivity"
+    android:nestedScrollingEnabled="true"
+    android:background="@color/lightPink"
+    android:id="@+id/quickTestConstraintLayout">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/quickTestTabAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/pink">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/quickTestTabToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:title="Quick Test"
+            app:titleTextColor="@color/white"
+            android:theme="@style/ToolBarTheme.ToolBarStyle"
+            app:layout_scrollFlags="enterAlways|scroll">
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@id/quickTestTabAppbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/quickTestCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginBottom="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="15dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/quickTestQuestionNumberTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Q1"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/quickTestQuestionTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="8"
+                        android:text="What is the meaning of this?"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:gravity="start"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="5dp"/>
+
+
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/option1Checkbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="option 1"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:background="@color/white"
+                    android:layout_marginStart="10dp" />
+
+                <CheckBox
+                    android:id="@+id/option2Checkbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="option 2"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:background="@color/white"
+                    android:layout_marginStart="10dp"/>
+
+                <CheckBox
+                    android:id="@+id/option3Checkbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="option 3"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:background="@color/white"
+                    android:layout_marginStart="10dp"/>
+
+                <CheckBox
+                    android:id="@+id/option4Checkbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="option 4"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:background="@color/white"
+                    android:layout_marginStart="10dp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nextQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="normal"
+            app:elevation="8dp"
+            android:src="@drawable/tickmark"
+            android:scaleX="1.08"
+            android:scaleY="1.08"
+            app:backgroundTint="@color/pink"
+            android:layout_below="@id/quickTestCardView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-30dp"
+            android:layout_marginEnd="15dp"/>
+
+
+    </RelativeLayout>
+
+
+    <com.github.fabtransitionactivity.SheetLayout
+        android:id="@+id/quickTestBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        app:ft_container_gravity="center"
+        app:ft_color="@color/pink"
+        android:elevation="2dp">
+
+
+    </com.github.fabtransitionactivity.SheetLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/sheetFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:backgroundTint="@color/lightPink"
+        android:layout_gravity="bottom|center_horizontal"
+        app:elevation="0dp"
+        android:layout_marginBottom="30dp"/>
+
+
+    <com.dd.morphingbutton.MorphingButton
+        android:id="@+id/quickTestSubmitBtnMorph"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Finish test"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:layout_dodgeInsetEdges="bottom"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:visibility="visible"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
