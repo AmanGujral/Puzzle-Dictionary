@@ -1,6 +1,8 @@
 package com.faicess.puzzledictionary;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +16,14 @@ import com.faicess.puzzledictionary.HomeScreenActivity;
 
 public class DictionaryItemAdapter extends RecyclerView.Adapter<DictionaryItemAdapter.ViewHolder> implements Filterable{
 
-    private List<String> words = new ArrayList<>();
-    private List<String> meanings;
-    private List<String> wordsTemp;
-    private List<String> meaningsTemp;
+    private static List<String> words = new ArrayList<>();
+    private static List<String> meanings = new ArrayList<>();
+    private static List<String> wordsTemp = new ArrayList<>();
+    private static List<String> meaningsTemp = new ArrayList<>();
     private static ItemClickListener itemClickListener;
     private HomeScreenActivity homeScreenActivityObject;
 
+    int i = 1;
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -28,23 +31,26 @@ public class DictionaryItemAdapter extends RecyclerView.Adapter<DictionaryItemAd
             protected FilterResults performFiltering(CharSequence charSequence) {
                 String charString = charSequence.toString();
                 if(charString.isEmpty()){
-                    words = wordsTemp;
+                    /*words = wordsTemp;
                     meanings = meaningsTemp;
+                    Log.e("filter empty", String.valueOf(i++));*/
                 }
                 else {
                     List<String> filteredList = new ArrayList<>();
-                    for (String row : wordsTemp){
+                    meanings.clear();
+                    for (String row : words){
 
                         if(row.toLowerCase().contains(charString.toLowerCase())){
+                            Log.e("filter not empty", String.valueOf(i++));
                             filteredList.add(row);
                             meanings.add(homeScreenActivityObject.GetMeaning(row));
                         }
                     }
-                    words = filteredList;
+                    wordsTemp = filteredList;
                 }
 
                 FilterResults filterResults = new FilterResults();
-                filterResults.values = words;
+                filterResults.values = wordsTemp;
                 return filterResults;
             }
 
@@ -62,10 +68,10 @@ public class DictionaryItemAdapter extends RecyclerView.Adapter<DictionaryItemAd
     }
 
     public DictionaryItemAdapter(List<String> wordList, List<String> meaningList, ItemClickListener listener){
-        this.words = wordList;
-        this.meanings = meaningList;
-        this.wordsTemp = words;
-        this.meaningsTemp = meaningList;
+        words = wordList;
+        meanings = meaningList;
+        wordsTemp = words;
+        meaningsTemp = meaningList;
         DictionaryItemAdapter.itemClickListener = listener;
     }
 
@@ -83,10 +89,11 @@ public class DictionaryItemAdapter extends RecyclerView.Adapter<DictionaryItemAd
 
     @Override
     public int getItemCount() {
-        if(words != null) {
+        /*if(words != null) {
             return words.size();
         }
-        else return 5;
+        else return 5;*/
+        return words.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

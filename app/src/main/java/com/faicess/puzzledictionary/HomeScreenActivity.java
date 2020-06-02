@@ -37,13 +37,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import com.chartboost.sdk.Chartboost;
-import com.chartboost.sdk.CBLocation;
 
 public class HomeScreenActivity extends AppCompatActivity {
 
     public static final int NUMBER_OF_WORDS = 5014;
-    public static int AD_COUNT = 0;
     static List<String> words = new ArrayList<>();
     static List<String> meanings = new ArrayList<>();
     BufferedReader reader;
@@ -77,8 +74,6 @@ public class HomeScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Chartboost.startWithAppId(this, "5bba7d92f6c3ac0bb2711b9f", "f6c2925ff0eedc0823084d11718a0b395cb469a1");
-        Chartboost.onCreate(this);
         setContentView(R.layout.activity_home_screen);
 
 
@@ -101,23 +96,6 @@ public class HomeScreenActivity extends AppCompatActivity {
 
 
         setSupportActionBar(homeToolbar);
-
-        if(Chartboost.hasInterstitial(CBLocation.LOCATION_DEFAULT)){
-            //show chartboost ads when ad count is equal to 2
-            if(AD_COUNT == 1) {
-                AD_COUNT = 0;
-                Log.e("show Ad", String.valueOf(AD_COUNT));
-                Chartboost.showInterstitial(CBLocation.LOCATION_DEFAULT);
-            }
-            else {
-                AD_COUNT++;
-                Log.e("show Ad", String.valueOf(AD_COUNT));
-            }
-        }
-        else {
-            //cache chartboost ads
-            Chartboost.cacheInterstitial(CBLocation.LOCATION_DEFAULT);
-        }
 
         //activity start fading animation
         constraintLayout.setAlpha(0f);
@@ -406,43 +384,33 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (Chartboost.onBackPressed()) {
-            return;
-        }
-        else {
-            finishAffinity();
-            this.finish();
-        }
+        finishAffinity();
+        this.finish();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Chartboost.onStart(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Chartboost.onResume(this);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Chartboost.onStop(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Chartboost.onDestroy(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Chartboost.onPause(this);
     }
 
 

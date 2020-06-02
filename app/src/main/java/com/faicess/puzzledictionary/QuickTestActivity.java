@@ -270,7 +270,7 @@ public class QuickTestActivity extends AppCompatActivity implements SheetLayout.
                     MorphingButton.Params circle = MorphingButton.Params.create()
                             .duration(500)
                             .cornerRadius(120) // 56 dp
-                            .width(360) // 56 dp
+                            .width(480) // 56 dp
                             .height(120) // 56 dp
                             .text("Show Result")
                             .color(getResources().getColor(R.color.pink)) // normal state color
